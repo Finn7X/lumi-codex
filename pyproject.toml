@@ -1,0 +1,62 @@
+[project]
+name = "lumi-codex"
+version = "0.0.1"
+description = "A mini-codex implementation in Python for learning agent architecture"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    { name = "Finn", email = "xujifennng@gmail.com" },
+]
+license = { text = "MIT" }
+keywords = ["agent", "llm", "codex", "terminal", "ai"]
+
+# Dependencies will be added incrementally during build phase
+dependencies = [
+    # Core
+    "anthropic>=0.40.0",
+    "openai>=1.50.0",
+    "httpx>=0.27.0",
+    "pydantic>=2.9.0",
+    # CLI
+    "rich>=13.9.0",
+    "prompt-toolkit>=3.0.48",
+    "tomli>=2.0.0; python_version<'3.11'",
+    # Tools
+    "lark>=1.2.0",          # apply_patch grammar
+    # Async
+    "anyio>=4.6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.24.0",
+    "ruff>=0.6.0",
+    "mypy>=1.11.0",
+]
+benchmarks = [
+    "datasets>=3.0.0",       # HuggingFace datasets for HumanEval
+    "docker>=7.0.0",          # SWE-bench Lite
+]
+
+[project.scripts]
+lumi = "lumi.cli.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["lumi"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "C4", "SIM", "RUF"]
+ignore = ["E501"]  # handled by formatter
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
