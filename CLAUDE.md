@@ -47,6 +47,7 @@
 - 中文 commit message OK（项目作者母语）
 - 遵循 conventional commits：`feat:` / `fix:` / `docs:` / `refactor:` / `test:`
 - 每个组件独立 commit，便于回顾学习路径
+- **不要添加任何 `Co-Authored-By:` 行**（包括 Claude / Claude Code / 其他 AI 助手）。这是项目作者的明确要求
 
 ## Phase 划分
 
