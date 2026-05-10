@@ -1,18 +1,18 @@
-# 学习笔记（Day 1-3 + Day 14 产出）
+# 学习笔记
 
-7 篇关于 codex 实现的笔记，目标：自己能把这一块讲清楚。
+阅读 codex 源码后的产出，每篇能让自己向他人讲清楚一块设计。
 
 ## 笔记列表
 
-| # | 标题 | 状态 | 目标完成 |
-|---|---|---|---|
-| 01 | [codex-rs Workspace 总览](./01-codex-workspace-overview.md) | TODO | Day 1 (5/09) |
-| 02 | [Submission/Event 总线设计](./02-submission-event-bus.md) | TODO | Day 2 (5/10) |
-| 03 | [Context 管理与 Compaction](./03-context-and-compaction.md) | TODO | Day 3 (5/11) |
-| 04 | [Rollout 与 Resume](./04-rollout-and-resume.md) | TODO | Day 3 (5/11) |
-| 05 | [Tool 系统与 Sandbox](./05-tool-and-sandbox.md) | TODO | Day 3 (5/11) |
-| 06 | [Multi-Agent (codex_delegate)](./06-multi-agent-delegate.md) | TODO | Day 3 (5/11) |
-| 07 | [codex vs Claude Code](./07-codex-vs-claude-code.md) | TODO | Day 14 (5/22)，v1 完工后写 |
+| # | 标题 | 内容 |
+|---|---|---|
+| 01 | codex-rs Workspace 总览 | 100+ crate 分类（核心 / 扩展 / cloud / 外围）；阅读路径推荐 |
+| 02 | Submission/Event 总线设计 | submission_loop 主循环；Op/EventMsg 全部变体分类；为什么 channel-driven 而不是 request-response；async task 派发模式 |
+| 03 | Context 管理与 Compaction | inline vs remote compaction；`build_compacted_history` 三段结构；`COMPACT_USER_MESSAGE_MAX_TOKENS = 20_000`；fake assistant message 存 summary 的设计；mid-turn 注入 initial context 的细节 |
+| 04 | Rollout 与 Resume | RolloutItem 5 种；反向扫找 checkpoint 的精妙；与 SQLite state 的分工；`ThreadRolledBack` 处理 |
+| 05 | Tool 系统与 Sandbox | `ToolSpec` 多形态；`AskForApproval` vs `SandboxPolicy` 两层概念分离；Seatbelt vs Landlock vs Windows sandbox 实现差异；apply_patch 手写 lenient parser |
+| 06 | Multi-Agent (codex_delegate) | fork-join 模式；父级审批拦截的实现细节；agent-graph-store 的真实作用；与 Claude Code subagent 对比 |
+| 07 | codex vs Claude Code | Hooks/Skills/Plugins/MCP 设计差异；多 agent 模型差异 |
 
 ## 写作原则
 
@@ -23,4 +23,6 @@
 
 ## 参考
 
-完整设计文档：[docs/superpowers/specs/2026-05-09-lumi-codex-design.md](../superpowers/specs/2026-05-09-lumi-codex-design.md)
+- [架构文档](../architecture.md)
+- [模块实现细节](../implementation.md)
+- [codex 源码定位](../codex-source-map.md)
