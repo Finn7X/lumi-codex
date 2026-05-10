@@ -21,6 +21,7 @@
 ## 文档导航
 
 - **[设计文档（spec）](./docs/superpowers/specs/2026-05-09-lumi-codex-design.md)** —— 完整的架构、决策、组件设计、时间表
+- **[Codex 调研与计划评审](./docs/superpowers/specs/2026-05-10-codex-research-plan-review.md)** —— 对照 Codex 真实源码后的范围校准与 14 天执行计划
 - **[学习笔记（7 篇）](./docs/learning/)** —— Day 1-3 学习 codex 源码后的产出（待写）
 
 ## 关键决策
